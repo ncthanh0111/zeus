@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 export class BasePage {
     readonly page: Page;
@@ -6,10 +6,6 @@ export class BasePage {
 
     constructor(page: Page) {
         this.page = page;
-    }
-
-    async getTagNameByLocator(locator: Locator, timeout=this.ELEMENT_DISPLAY_TIMEOUT): Promise<any> {
-        return (await locator.evaluate(node => node.nodeName)).toLowerCase();
     }
 
     async waitForElementVisible(elementIdentifier, timeout=this.ELEMENT_DISPLAY_TIMEOUT): Promise<void> {
@@ -32,7 +28,7 @@ export class BasePage {
 
     async isElementNotDisplayed(elementIdentifier, timeout=this.ELEMENT_DISPLAY_TIMEOUT): Promise<boolean> {
         try {
-            await this.waitForElementDisappear(elementIdentifier);
+            await this.waitForElementDisappear(elementIdentifier, timeout);
         }
         catch(TimeoutError){
             return false;
@@ -42,7 +38,7 @@ export class BasePage {
 
     async isElementDisplayed(elementIdentifier, timeout=this.ELEMENT_DISPLAY_TIMEOUT): Promise<boolean> {
         try {
-            await this.waitForElementVisible(elementIdentifier);
+            await this.waitForElementVisible(elementIdentifier, timeout);
         }
         catch(TimeoutError){
             return false;
