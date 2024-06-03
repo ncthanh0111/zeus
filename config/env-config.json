@@ -1,0 +1,12 @@
+{
+    "qa": {
+        "serverUrl": "https://qa.colonialsurety.com"
+    },
+    "uat": {
+        "serverUrl": "https://qa.colonialsurety.com"
+    },
+    "prod": {
+        "serverUrl": "https://quote.colonialsurety.com"
+    
+    } 
+}

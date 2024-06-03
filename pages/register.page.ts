@@ -1,9 +1,8 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base.page';
-import { SERVER_URL } from '../config/base-config';
 
-export class LoginPage extends BasePage{
-    public PAGE_URL = SERVER_URL + '/quote/login';
+export class RegisterPage extends BasePage{
+    public PAGE_URL = 'https://quote.colonialsurety.com/quote/register/individual';
     private loginForm: Locator;
     private label: Locator;
     private emailInput: Locator;
@@ -32,8 +31,8 @@ export class LoginPage extends BasePage{
     }
 
     async inputEmailAndPassword(email: string, password: string): Promise<void> {
-        await this.emailInput.fill(email);
-        await this.passwordInput.fill(password);
+        await this.emailInput.filter({hasText: email}).click();
+        await this.passwordInput.filter({hasText: password}).click();
     }
 
     async clickOnLoginButton(): Promise<void> {

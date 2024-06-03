@@ -45,4 +45,9 @@ export class BasePage {
         }
         return true;
     }
+
+    async clickOnButtonByName(btnName, timeout=this.ELEMENT_DISPLAY_TIMEOUT): Promise<void> {
+        await this.page.locator(`//button[.='${btnName}']`).click({timeout: timeout});
+    }
+
 }

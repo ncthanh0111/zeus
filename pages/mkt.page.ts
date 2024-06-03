@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base.page';
 
-export class HomePage extends BasePage{
+export class MKTPage extends BasePage{
     public PAGE_URL = 'https://www.colonialsurety.com/';
     private loginButton: Locator;
     private loginOption: Locator;
